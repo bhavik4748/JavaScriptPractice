@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Practice</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+        function script(url) {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = url;
+            var x = document.getElementsByTagName('head')[0];
+            x.appendChild(s);
+        }
+        setTimeout(function () {
+            script('app/JavaScriptPractice.js');
+        }, 2000);
+
+    </script>
+    <!--<script src="app/JavaScriptPractice.js"></script>-->
+
+</head>
+<body>
+
+    <h1>JS Practice</h1>
+
+</body>
+</html>
