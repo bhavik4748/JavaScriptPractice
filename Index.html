@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>JS Practice</title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript">
         function script(url) {
             var s = document.createElement('script');
@@ -16,6 +17,10 @@
             script('app/JavaScriptPractice.js');
         }, 3000);
 
+
+        //Canvas
+
+
     </script>
     <!--<script src="app/JavaScriptPractice.js"></script>-->
 
@@ -23,6 +28,16 @@
 <body>
 
     <h1>JS Practice</h1>
+
+    <video src="https://w3schools.com/html/mov_bbb.mp4" width="240" height="160" controls></video>
+    <canvas id="c" width="300" height="300"></canvas>
+
+    <script type="text/javascript">
+        var canvas = document.getElementById("c");
+        var drawing_context = canvas.getContext("2d");
+        drawing_context.fillStyle = "blue";
+        drawing_context.fillRect(50, 50, 100, 100);
+    </script>
 
 </body>
 </html>
