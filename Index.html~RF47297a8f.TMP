@@ -32,20 +32,18 @@
     <h1>JS Practice</h1>
 
     <video src="https://w3schools.com/html/mov_bbb.mp4" width="240" height="160" controls></video>
-    <div id="aniDiv">
-        Animation baby!!
-    </div>
-
     <canvas id="c" width="300" height="300"></canvas>
 
     <script type="text/javascript">
         var canvas = document.getElementById("c");
         var drawing_context = canvas.getContext("2d");
-      //  drawing_context.fillStyle = "blue";
-        //drawing_context.fillRect(50, 50, 100, 100);
+        drawing_context.fillStyle = "blue";
+        drawing_context.fillRect(50, 50, 100, 100);
     </script>
 
 
-   
+    <footer>
+        right
+    </footer>
 </body>
 </html>
