@@ -1,7 +1,8 @@
-﻿console.log('Hello World!!');
+﻿'use strict';
+console.log('Hello World!!');
 
 var output = (function (x) {
-    delete x;
+    //  delete x;
     return x;
 })(5)
 console.log(output);
@@ -16,6 +17,21 @@ function compTimeFunc() {
 
 //console.log(runTimeFunc() + compTimeFunc());
 
+//js object
+var per = function (fn, ln, age, eye) {
+    this.fn = fn;
+    this.ln = ln;
+    this.age = age;
+    this.eye = eye;
+    this.fullname = function () {
+        console.log('fullname: ' + this.fn + ' ' + ln); return;
+    };
+};
+var father = new per('abc', 'xyz', 50, 'black');
+father.fullname();
+var son = Object.create(father);
+son.fullname();
+
 var Employee = {
     age: 28,
     name: 'abc',
@@ -25,7 +41,7 @@ var Employee = {
 console.log(delete Employee.name);   // returns true
 console.log(delete Employee.age);    // returns true
 
-console.log(Employee);
+console.log(Employee.age);
 
 var Employee1 = {
     company: 'xyz'
@@ -59,13 +75,43 @@ arr2.push(arr3);
 console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(1));
 console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(1));
 
+console.log(1 + "2" + "2");
+console.log(1 + +"2" + "2");
+console.log(1 + -"1" + "2");
+console.log(+"1" + "1" + "2");
+console.log("A" - "B" + "2");
+console.log("A" - "B" + 2);
+
+
+let _counter = new WeakMap();
+let _action = new WeakMap();
+class Countdown {
+    constructor(counter, action) {
+        _counter.set(this, counter);
+        _action.set(this, action);
+    }
+    dec() {
+        let counter = _counter.get(this);
+        if (counter < 1) return;
+        counter--;
+        _counter.set(this, counter);
+        if (counter === 0) {
+            _action.get(this)();
+        }
+    }
+}
+let c = new Countdown(2, () => console.log('DONE'));
+c.dec();
+c.dec();
+
+
 function sum(x) {
     if (arguments.length == 2)
         return arguments[0] + arguments[1];
     else {
-        return function (y) {
+        return (function (y) {
             return x + y;
-        }
+        });
     }
 }
 
@@ -85,6 +131,15 @@ function isPalindrome(str) {
 }
 
 console.log(isPalindrome('trarT1'));
+
+console.log('cars problem:');
+//var colors = ['blue', 'black', 'red'];
+//var cars = colors.map(buildCar);
+//function buildCar(color) {
+//    return new Car(color);
+//}
+
+
 
 var car = (function () {
     var color;
@@ -106,7 +161,7 @@ c1.displayCar();
 
 c2.displayCar();
 
-var memo=[];
+var memo = [];
 function fibo(x) {
     if (x == 0)
         return 0;
@@ -115,7 +170,7 @@ function fibo(x) {
     else if (x == 2)
         return 1;
     else {
-        if(memo[x])
+        if (memo[x])
             return memo[x];
         memo[x] = (fibo(x - 1) + fibo(x - 2));
         return memo[x];
