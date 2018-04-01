@@ -62,8 +62,13 @@ function test() {
     for (var i = 0; i < 5; i++) {
         var btn = document.createElement('button');
         btn.appendChild(document.createTextNode('Button ' + i));
-        btn.addEventListener('click', function () { console.log(i); });
-        //  document.appendChild(btn);
+      //  btn.addEventListener('click', (function (i) { console.log(i); })(i));
+
+        btn.addEventListener('click', (function (i) {
+            return function () { console.log(i); }
+        })(i));
+
+        document.body.appendChild(btn);
     }
 }
 test();
@@ -72,8 +77,8 @@ var arr1 = "john".split('');
 var arr2 = arr1.reverse();
 var arr3 = "jones".split('');
 arr2.push(arr3);
-console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(1));
-console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(1));
+console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 console.log(1 + "2" + "2");
 console.log(1 + +"2" + "2");
@@ -191,11 +196,11 @@ var globalVar = "abc";
         // variable declared in innerFunction function scope
         var innerFuncVar = "y";
         console.log(
-        "outerArg = " + outerArg + "\n" +
-        "outerFuncVar = " + outerFuncVar + "\n" +
-        "innerArg = " + innerArg + "\n" +
-        "innerFuncVar = " + innerFuncVar + "\n" +
-        "globalVar = " + globalVar);
+            "outerArg = " + outerArg + "\n" +
+            "outerFuncVar = " + outerFuncVar + "\n" +
+            "innerArg = " + innerArg + "\n" +
+            "innerFuncVar = " + innerFuncVar + "\n" +
+            "globalVar = " + globalVar);
     })(5);
     // end of scope innerFunction)(5); // Pass 5 as parameter
 })(7);

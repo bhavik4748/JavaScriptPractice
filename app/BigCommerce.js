@@ -54,4 +54,6 @@ function resolve(path) {
  console.log(resolve('/a/~/~/b')     === '/a/home/user/home/user/b' ? 'success' : resolve('/a/~/~/b'));
 
 // bonus
- console.log(resolve('~/..')         === '/home'                    ? 'success' : resolve('~/..'));
+ console.log(resolve('~/..') === '/home' ? 'success' : resolve('~/..'));
+
+ console.log(resolve('𨋳'));
