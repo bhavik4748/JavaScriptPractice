@@ -1,6 +1,15 @@
 ﻿'use strict';
 console.log('Hello World!!');
 
+var a11 = {},
+    b11 = { key: 'b' },
+    c11 = { key: 'c' };
+
+a11[b11] = 123;
+a11[c11] = 456;
+
+console.log(a11[b11]);
+
 var output = (function (x) {
     //  delete x;
     return x;
