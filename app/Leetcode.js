@@ -12,3 +12,19 @@
 
     return result;
 };
+
+
+var hammingDistance = function (x, y) {
+    var z = x ^ y;
+    z = z.toString(2);
+    var n = 0;
+    for (i = 0; i < z.length; i++) {
+        if (z.charAt(i) == '1') {
+            n++;
+        }
+    }
+    return n;
+};
+
+var HResult = hammingDistance(4, 14);
+console.log(HResult);
